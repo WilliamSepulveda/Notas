@@ -9,7 +9,7 @@ const NewNote = () => {
         <div className={styles.inputContainer}>
           <input
             type="text"
-            placeholder="Food Recipe"
+            placeholder="New note..."
             className={styles.input}
           />
           <img src={close} alt="delete" className={styles.deleteIcon} />
