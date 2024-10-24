@@ -4,7 +4,17 @@ import rafiki from '../storage/img/rafiki.png';
 import search from '../storage/img/search.png';
 import info from '../storage/img/info_outline.png';
 
+import { useNavigate } from 'react-router-dom';
+
+
+
 const Home = () => {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/NewNote');
+  };
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -24,7 +34,7 @@ const Home = () => {
         <p className={styles.text}>Create your first note!</p>
       </div>
 
-      <div className={styles.roundedButton}>
+      <div className={styles.roundedButton} onClick={handleClick}>
         <img src={add} alt="Add Note Icon" />
       </div>
     </div>

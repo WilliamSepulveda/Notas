@@ -1,0 +1,96 @@
+@import url(../styles/variable.css);
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: var(--color-principal);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  font-family: 'nunito-black';
+  letter-spacing: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.iconContainer {
+  display: flex;
+  gap: 15px;
+}
+.icon1, .icon2{
+  display: flex;
+  background-color: #555;
+  width: 3rem;
+  height: 2rem;
+  border-radius: 10px;
+  gap: 10px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+} 
+.icon1 img, .icon2 img {
+  width: 24px;
+  height: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.image {
+  width: 20rem;
+  margin-bottom: 20px;
+}
+
+.text {
+  font-size: 20px;
+  font-family: 'nunito-black';
+}
+
+.inputContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.input {
+  width: 100%;
+  padding: 5px 5px;
+  border-radius: 2vw;
+  background-color: #555;
+  color: white;
+
+  border: none;
+  font-size: 20px;
+  font-family: 'nunito-black';
+}
+
+
+.deleteIcon{
+  position: relative;
+  right: 26px;
+  cursor: pointer;
+}
