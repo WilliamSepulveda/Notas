@@ -1,92 +1,98 @@
+@import url(../styles/variable.css);
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .container {
-  width: 414px;
-  height: 896px;
-  position: relative;
-  background: #252525;
-  border-radius: 30px;
+  background-color: var(--color-principal);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .title {
-  position: absolute;
-  left: 24px;
-  top: 47px;
+  font-family: 'nunito-black';
+  letter-spacing: 5px;
+  font-size: 24px;
+  font-weight: bold;
   color: white;
-  font-size: 43px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 600;
-  word-wrap: break-word;
 }
 
-.noteMessage {
-  position: absolute;
-  left: 109px;
-  top: 576px;
-  color: white;
-  font-size: 20px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 300;
-  word-wrap: break-word;
+.iconContainer {
+  display: flex;
+  gap: 15px;
+}
+.icon1, .icon2{
+  display: flex;
+  background-color: #555;
+  width: 3rem;
+  height: 2rem;
+  border-radius: 10px;
+  gap: 10px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+} 
+.icon1 img, .icon2 img {
+  width: 24px;
+  height: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .image {
-  width: 350px;
-  height: 286.73px;
-  position: absolute;
-  left: 32px;
-  top: 283px;
+  width: 20rem;
+  margin-bottom: 20px;
 }
 
-.button1 {
-  width: 50px;
-  height: 50px;
-  background: #3B3B3B;
-  border-radius: 15px;
-  position: absolute;
-  left: 339px;
-  top: 51px;
+.text {
+  background-color: #2d2d2d;
+  color: white;
+  border: none;
+  font-size: 25px;
+  font-family: 'nunito-black';
+  letter-spacing: 3px;
 }
 
-.icon1 {
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  left: 352px;
-  top: 64px;
-}
-
-.button2 {
-  width: 50px;
-  height: 50px;
-  background: #3B3B3B;
-  border-radius: 15px;
-  position: absolute;
-  left: 268px;
-  top: 51px;
-}
-
-.icon2 {
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  left: 281px;
-  top: 64px;
-}
 
 .roundedButton {
-  width: 70px;
-  height: 70px;
-  position: absolute;
-  left: 309px;
-  top: 777px;
-  background: #252525;
-  box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.40);
-  border-radius: 9999px;
+  background-color: #3e3e3e;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 
-.roundedIcon {
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  left: 320px;
-  top: 788px;
+.roundedButton img {
+  width: 24px;
+  height: 24px;
+}
+
+.roundedButton:hover {
+  background-color: #555;
 }

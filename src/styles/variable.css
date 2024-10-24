@@ -1,0 +1,7 @@
+:root{
+    --color-principal: #2d2d2d;
+}
+@font-face {
+    font-family: 'nunito-black';
+    src: url(../storage/font/Nunito/Nunito-Black.ttf);
+}

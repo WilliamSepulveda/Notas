@@ -1,29 +1,31 @@
 import styles from '../styles/Home.module.css';
 import add from '../storage/img/add.png';
-import cuate from '../storage/img/cuate.png';
-
+import rafiki from '../storage/img/rafiki.png';
+import search from '../storage/img/search.png';
+import info from '../storage/img/info_outline.png';
 
 const Home = () => {
-
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Notes</div>
-      <div className={styles.noteMessage}>Create your first note!</div>
-      <img className={styles.image} src= {cuate} alt="Placeholder" />
-      <div className={styles.button1} />
-      <div className={styles.icon1}>
-        {/* Asegúrate de tener contenido aquí, como un ícono */}
-        <img src="" alt="Icon 1" />
+      <header className={styles.header}>
+        <div className={styles.title}>Notes</div>
+        <div className={styles.iconContainer}>
+          <div className={styles.icon1}>
+            <img src={search} alt="Search Icon" />
+          </div>
+          <div className={styles.icon2}>
+            <img src={info} alt="Info Icon" />
+          </div>
+        </div>
+      </header>
+
+      <div className={styles.content}>
+        <img className={styles.image} src={rafiki} alt="Placeholder" />
+        <p className={styles.text}>Create your first note!</p>
       </div>
-      <div className={styles.button2} />
-      <div className={styles.icon2}>
-        {/* Asegúrate de tener contenido aquí, como un ícono */}
-        <img src="../storage/img/add.png" alt="Icon 2" />
-      </div>
-      <div className={styles.roundedButton} />
-      <div className={styles.roundedIcon}>
-        {/* Asegúrate de tener contenido aquí, como un ícono */}
-        <img src={add} alt="Rounded Icon" />
+
+      <div className={styles.roundedButton}>
+        <img src={add} alt="Add Note Icon" />
       </div>
     </div>
   );
