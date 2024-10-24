@@ -1,0 +1,92 @@
+.container {
+  width: 414px;
+  height: 896px;
+  position: relative;
+  background: #252525;
+  border-radius: 30px;
+}
+
+.title {
+  position: absolute;
+  left: 24px;
+  top: 47px;
+  color: white;
+  font-size: 43px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.noteMessage {
+  position: absolute;
+  left: 109px;
+  top: 576px;
+  color: white;
+  font-size: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+  word-wrap: break-word;
+}
+
+.image {
+  width: 350px;
+  height: 286.73px;
+  position: absolute;
+  left: 32px;
+  top: 283px;
+}
+
+.button1 {
+  width: 50px;
+  height: 50px;
+  background: #3B3B3B;
+  border-radius: 15px;
+  position: absolute;
+  left: 339px;
+  top: 51px;
+}
+
+.icon1 {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 352px;
+  top: 64px;
+}
+
+.button2 {
+  width: 50px;
+  height: 50px;
+  background: #3B3B3B;
+  border-radius: 15px;
+  position: absolute;
+  left: 268px;
+  top: 51px;
+}
+
+.icon2 {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 281px;
+  top: 64px;
+}
+
+.roundedButton {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  left: 309px;
+  top: 777px;
+  background: #252525;
+  box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.40);
+  border-radius: 9999px;
+}
+
+.roundedIcon {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 320px;
+  top: 788px;
+}
