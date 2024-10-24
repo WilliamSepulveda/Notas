@@ -1,0 +1,27 @@
+{
+    "usuarios": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "objectId"
+        },
+        "userName": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "email": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "password": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "created_at": {
+          "type": "date"
+        }
+      },
+      "required": ["userName", "email", "password", "created_at"],
+      "unique": ["userName", "email"]
+    }
+  }
