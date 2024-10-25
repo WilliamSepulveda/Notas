@@ -5,3 +5,7 @@
     font-family: 'nunito-black';
     src: url(../storage/font/Nunito/Nunito-Black.ttf);
 }
+@font-face {
+    font-family: 'nunito';
+    src: url(../storage/font/Nunito/Nunito-Regular.ttf);
+}
