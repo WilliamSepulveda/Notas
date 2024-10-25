@@ -84,3 +84,4 @@ npm install
 → npm install corse
 → npm install mongoose
 → npm install dotenv
+→ npm install express-validator

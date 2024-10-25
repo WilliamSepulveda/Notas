@@ -1,13 +1,52 @@
-const mongoose = require('mongoose');
+const { MongoClient } = require('mongodb');
 
-const connectDB = async () => {
-    try {
-        await mongoose.connect('mongodb://localhost:27017/Notas'); 
-        console.log('Conexión a la base de datos exitosa');
-    } catch (error) {
-        console.error('Error al conectar a la base de datos:', error.message);
-        process.exit(1); 
+module.exports = class ConnectMongo {
+    static instanceConnect;
+    db;
+    connection;
+    #user; 
+    #password; 
+
+    constructor({ user, pwd } = { user: process.env.MONGO_USER, pwd: process.env.MONGO_PSW }) {
+        if (ConnectMongo.instanceConnect) { 
+            return ConnectMongo.instanceConnect;
+        }
+        this.#user = user; 
+        this.#password = pwd;
+        ConnectMongo.instanceConnect = this;
+    }
+
+    async connectOpen() {
+        try {
+            console.log('Intentando conectar a la base de datos...');
+            this.connection = new MongoClient(
+            `${process.env.MONGO_PROTOCOL}${process.env.MONGO_USER}:${process.env.MONGO_PSW}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_NAME}`);
+    
+            await this.connection.connect();
+            this.db = this.connection.db(process.env.MONGO_DB_NAME);
+            console.log('Conexión exitosa a la base de datos.');
+            return this.db;
+        } catch (error) {
+            console.error('Error conectando a la base de datos:', error.message);
+            this.connection = undefined;
+            ConnectMongo.instanceConnect = undefined;
+            throw new Error(JSON.stringify({ status: 500, message: 'Error connecting to database.' }));
+        }
+    }
+
+    get user() {
+        return this.#user; 
+    }
+
+    set user(user) {
+        this.#user = user; 
+    }
+
+    get password() {
+        return this.#password;
+    }
+
+    set password(pwd) {
+        this.#password = pwd; 
     }
 };
-
-module.exports = connectDB;

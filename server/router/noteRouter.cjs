@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const noteController = require('../controller/note.controller.cjs');
 
 // Definir una ruta de ejemplo
-router.get('/', (req, res) => {
-    res.send('¡Hola desde el router!');
-});
+router.get('/', noteController.getAllNotes); 
 
 module.exports = router; 

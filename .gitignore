@@ -1,4 +1,4 @@
-# Logs
+# Ignorar logs
 logs
 *.log
 npm-debug.log*
@@ -7,12 +7,19 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Ignorar archivos de configuración de entorno
+.env
+package-lock.json
+
+# Ignorar dependencias y compilaciones
 node_modules
 dist
 dist-ssr
+
+# Ignorar archivos locales
 *.local
 
-# Editor directories and files
+# Ignorar directorios y archivos de editores
 .vscode/*
 !.vscode/extensions.json
 .idea
