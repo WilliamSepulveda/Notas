@@ -9,13 +9,39 @@ Currently, two official plugins are available:
 
 
 
-# Notas
+
+# Proyecto de Notas - Frontend
+
+Este proyecto es una aplicación de **notas** creada con **React** utilizando **Vite** como herramienta de desarrollo. El frontend está diseñado para interactuar con una API, permitiendo la creación, edición y guardado de notas. Además, se incluye navegación mediante **React Router** y gestión de solicitudes HTTP con **Axios**.
+
+## Características principales
+
+- **Vite**: Utilizado para un entorno de desarrollo rápido y ligero.
+- **React**: Para la construcción de la interfaz de usuario.
+- **React Router**: Para manejar la navegación entre diferentes rutas de la aplicación.
+
+        npm install react-router-dom
+
+- **Axios**: Para gestionar las solicitudes HTTP al servidor, como la creación y guardado de notas.
+
+        npm install axios
 
 
-## instalacions 
-**esto es para las redirecciones**
+## Requisitos previos
 
-    npm install react-router-dom
-    
-**esto es para guardar datos**
-    npm install axios
+Asegúrate de tener **Node.js** y **npm** instalados en tu sistema antes de comenzar.
+
+## Instalación
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/tuusuario/proyecto-notas.git
+
+2. **Acceder al directorio del proyecto:**
+
+    ```bash
+    cd proyecto-notas
+3. **instalar las dependicias**
+
+    ```bash
+    npm install 
