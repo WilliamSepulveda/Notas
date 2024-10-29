@@ -49,5 +49,30 @@ module.exports = class Asiento {
             };
         }
     }
-       
+    async getNoteTitle(noteTitle) {
+        await this.connectDB(); // Asegúrate de conectarte a la base de datos
+        try {
+            const collection = this.db.collection('notas_historial');
+
+            // Realiza la búsqueda de notas que contengan el título buscado (case insensitive)
+            const result = await collection.findOne({ title: { $regex: noteTitle, $options: 'i' } });
+
+            if (!result) {
+                return {
+                    status: 404,
+                    message: 'Nota no encontrada',
+                };
+            }
+
+            return {
+                status: 200,
+                data: result,
+            };
+        } catch (error) {
+            return {
+                status: 500,
+                message: `Error al obtener documentos: ${error.message}`,
+            };
+        }
+    }
 };

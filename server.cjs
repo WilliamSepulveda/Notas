@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', miRouter); 
+app.use('/notes', miRouter); 
 
 app.use((req, res) => {
     res.status(404).json({ message: 'La ruta solicitada no está disponible' });
