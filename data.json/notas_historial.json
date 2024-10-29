@@ -1,44 +1,44 @@
 {
-    "notas_historial": {
-      "type": "object",
-      "properties": {
-        "_id": {
-          "type": "objectId"
-        },
-        "user_id": {
-          "type": "objectId"
-        },
-        "title": {
-          "type": "string",
-          "maxLength": 100
-        },
-        "content": {
+  "notas_historial": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "objectId"
+      },
+      "user_id": {
+        "type": "objectId"
+      },
+      "id": {                    
+        "type": "integer",       
+        "example": 1             
+      },
+      "title": {
+        "type": "string",
+        "maxLength": 100
+      },
+      "content": {
+        "type": "string"
+      },
+      "tags": {
+        "type": "array",
+        "items": {
           "type": "string"
-        },
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "created_at": {
-          "type": "date"
-        },
-        "update_at": {
-          "type": "date"
-        },
-        "change": {
-          "type": "string",
-          "maxLength": 255
-        },
-        "timestamp": {
-          "type": "date"
         }
       },
-      "required": ["user_id", "title", "content", "created_at", "change", "timestamp"]
-    }
+      "created_at": {
+        "type": "date"
+      },
+      "update_at": {
+        "type": "date"
+      },
+      "change": {
+        "type": "string",
+        "maxLength": 255
+      },
+      "timestamp": {
+        "type": "date"
+      }
+    },
+    "required": ["user_id", "title", "content", "created_at", "change", "timestamp"]
   }
-  
-
-
-  
+}

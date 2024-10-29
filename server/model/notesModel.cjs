@@ -25,4 +25,29 @@ module.exports = class Asiento {
         }
     }
 
+    async getNoteId(noteId) {
+        await this.connectDB(); // Make sure to connect to the database
+        try {
+            const collection = this.db.collection('notas_historial');
+            const result = await collection.findOne({ id: parseInt(noteId) }); // Find by the 'id' field
+    
+            if (!result) {
+                return {
+                    status: 404,
+                    message: 'Nota no encontrada', // Message when no document is found
+                };
+            }
+    
+            return {
+                status: 200, // Success status
+                data: result, // Return the found document
+            };
+        } catch (error) {
+            return {
+                status: 500,
+                message: `Error al obtener documentos: ${error.message}`, // Handle database error
+            };
+        }
+    }
+       
 };

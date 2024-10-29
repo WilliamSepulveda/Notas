@@ -1,22 +1,32 @@
+import { useEffect, useState } from 'react';
 import styles from '../styles/HomeScreen.module.css';
 import add from '../storage/img/add.png';
 import search from '../storage/img/search.png';
 import info from '../storage/img/info_outline.png';
-import { useNavigate, Link } from 'react-router-dom'; // Asegúrate de importar Link
+import { useNavigate, Link } from 'react-router-dom';
 
 const Home = () => {
+  const [notas, setNotas] = useState([]);
   const navegation = useNavigate();
+
+  useEffect(() => {
+    // Llamada a la API para obtener notas
+    const fetchNotas = async () => {
+      try {
+        const response = await fetch('http://localhost:5500');
+        const data = await response.json();
+        setNotas(data);
+      } catch (error) {
+        console.error('Error al obtener las notas:', error);
+      }
+    };
+
+    fetchNotas();
+  }, []);
 
   const handleClick = () => {
     navegation('/NewNote');
-  }
-
-  const notas = [
-    { id: 1, text: "UI concepts worth existing", color: '#ff99ff' },
-    { id: 2, text: "Book Review: The Design of Everyday Things by Don Norman", color: '#ff9999' },
-    { id: 3, text: "Animes produced by Ufotable", color: '#99ff99' },
-    { id: 4, text: "Mangas planned to read", color: '#ffff99' },
-  ];
+  };
 
   return (
     <div className={styles.container}>

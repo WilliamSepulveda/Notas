@@ -1,0 +1,253 @@
+[
+    {
+      "_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14b01"
+      },
+      "user_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14c01"
+      },
+      "id": 1,
+      "title": "Ideas para el proyecto",
+      "content": "Notas sobre la estructura del proyecto y los requerimientos.",
+      "tags": [
+        "proyecto",
+        "ideas"
+      ],
+      "created_at": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      },
+      "update_at": {
+        "$date": "2024-01-12T12:00:00.000Z"
+      },
+      "change": "Nota creada",
+      "timestamp": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14b02"
+      },
+      "user_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14c02"
+      },
+      "id": 2,
+      "title": "Lista de compras",
+      "content": "Leche, Pan, Huevo.",
+      "tags": [
+        "compras",
+        "lista"
+      ],
+      "created_at": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      },
+      "update_at": {
+        "$date": "2024-01-12T12:00:00.000Z"
+      },
+      "change": "Nota creada",
+      "timestamp": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14b03"
+      },
+      "user_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14c03"
+      },
+      "id": 3,
+      "title": "Plan de vacaciones",
+      "content": "Destinos sugeridos para el viaje de verano.",
+      "tags": [
+        "vacaciones",
+        "viaje"
+      ],
+      "created_at": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      },
+      "update_at": {
+        "$date": "2024-01-12T12:00:00.000Z"
+      },
+      "change": "Nota creada",
+      "timestamp": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14b04"
+      },
+      "user_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14c04"
+      },
+      "id": 4,
+      "title": "Resumen de la reunión",
+      "content": "Discusión sobre el presupuesto y los plazos.",
+      "tags": [
+        "reunión",
+        "resumen"
+      ],
+      "created_at": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      },
+      "update_at": {
+        "$date": "2024-01-12T12:00:00.000Z"
+      },
+      "change": "Nota creada",
+      "timestamp": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14b05"
+      },
+      "user_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14c05"
+      },
+      "id": 5,
+      "title": "Objetivos del mes",
+      "content": "1. Aprender una nueva habilidad. 2. Completar un proyecto.",
+      "tags": [
+        "objetivos",
+        "metas"
+      ],
+      "created_at": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      },
+      "update_at": {
+        "$date": "2024-01-12T12:00:00.000Z"
+      },
+      "change": "Nota creada",
+      "timestamp": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14b06"
+      },
+      "user_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14c06"
+      },
+      "id": 6,
+      "title": "Cita médica",
+      "content": "Consulta el lunes a las 3 PM.",
+      "tags": [
+        "salud",
+        "citas"
+      ],
+      "created_at": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      },
+      "update_at": {
+        "$date": "2024-01-12T12:00:00.000Z"
+      },
+      "change": "Nota creada",
+      "timestamp": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14b07"
+      },
+      "user_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14c07"
+      },
+      "id": 7,
+      "title": "Nuevas recetas",
+      "content": "1. Tarta de manzana. 2. Galletas de avena.",
+      "tags": [
+        "cocina",
+        "recetas"
+      ],
+      "created_at": {
+        "$date": "2024-02-01T10:00:00.000Z"
+      },
+      "update_at": {
+        "$date": "2024-02-01T12:00:00.000Z"
+      },
+      "change": "Nota creada",
+      "timestamp": {
+        "$date": "2024-02-01T10:00:00.000Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14b08"
+      },
+      "user_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14c08"
+      },
+      "id": 8,
+      "title": "Recetas de cocina",
+      "content": "1. Pasta al pesto. 2. Ensalada César.",
+      "tags": [
+        "cocina",
+        "recetas"
+      ],
+      "created_at": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      },
+      "update_at": {
+        "$date": "2024-01-12T12:00:00.000Z"
+      },
+      "change": "Nota creada",
+      "timestamp": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14b09"
+      },
+      "user_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14c09"
+      },
+      "id": 9,
+      "title": "Plan de estudios",
+      "content": "1. Leer capítulo 3. 2. Practicar ejercicios de matemáticas.",
+      "tags": [
+        "estudio",
+        "plan"
+      ],
+      "created_at": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      },
+      "update_at": {
+        "$date": "2024-01-12T12:00:00.000Z"
+      },
+      "change": "Nota creada",
+      "timestamp": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14b0a"
+      },
+      "user_id": {
+        "$oid": "60d5ec49e5f2c5d3d0f14c0a"
+      },
+      "id": 10,
+      "title": "Ejercicios de gimnasio",
+      "content": "1. Sentadillas. 2. Flexiones de brazos.",
+      "tags": [
+        "ejercicio",
+        "gimnasio"
+      ],
+      "created_at": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      },
+      "update_at": {
+        "$date": "2024-01-12T12:00:00.000Z"
+      },
+      "change": "Nota creada",
+      "timestamp": {
+        "$date": "2024-01-11T10:00:00.000Z"
+      }
+    }
+  ]
+  
