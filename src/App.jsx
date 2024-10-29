@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/NewNote" element={<NewNote />} />
-          <Route path="HomeScreen" element={<HomeScreen />}/>
+          <Route path="/HomeScreen" element={<HomeScreen />}/>
           <Route path="editNota" element={<EditNota />}/>
         </Routes>
       </Router>
