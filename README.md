@@ -85,3 +85,10 @@ npm install
 → npm install mongoose
 → npm install dotenv
 → npm install express-validator
+```
+
+
+**intalación para la autentificación**
+```bash
+→ npm install jsonwebtoken
+```
