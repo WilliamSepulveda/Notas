@@ -48,3 +48,28 @@ exports.getNoteByTitle = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener la nota' });
     }
 };
+
+
+exports.getNoteByHistory = async (req, res) => {
+    try {
+        const { id } = req.params; // Obtener el id de la nota desde los parámetros de la ruta
+        const asiento = new Notes();
+
+        // Verificar si el usuario tiene rol de administrador
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({ message: "Acceso denegado: solo administradores" });
+        }
+
+        // Obtener el historial de la nota
+        const historyResult = await asiento.getHistoryNotes(id); // Asegúrate de implementar este método en tu modelo
+
+        if (historyResult.status !== 200) {
+            return res.status(historyResult.status).json({ message: historyResult.message });
+        }
+
+        // Devolver el historial de cambios
+        return res.status(200).json(historyResult.data);
+    } catch (error) {
+        return res.status(500).json({ message: `Error al obtener el historial de la nota: ${error.message}` });
+    }
+};

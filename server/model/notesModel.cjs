@@ -17,7 +17,7 @@ module.exports = class Asiento {
         await this.connectDB();
         try {
             const collection = this.db.collection('notas_historial');
-            const result = await collection.find(query).toArray(); 
+            const result = await collection.find(query).toArray();
             if (!result.length) throw new Error('No documents found');
             return result;
         } catch (error) {
@@ -26,35 +26,34 @@ module.exports = class Asiento {
     }
 
     async getNoteId(noteId) {
-        await this.connectDB(); // Make sure to connect to the database
+        await this.connectDB();
         try {
             const collection = this.db.collection('notas_historial');
-            const result = await collection.findOne({ id: parseInt(noteId) }); // Find by the 'id' field
-    
+            const result = await collection.findOne({ id: parseInt(noteId) });
+
             if (!result) {
                 return {
                     status: 404,
-                    message: 'Nota no encontrada', // Message when no document is found
+                    message: 'Nota no encontrada',
                 };
             }
-    
+
             return {
-                status: 200, // Success status
-                data: result, // Return the found document
+                status: 200,
+                data: result,
             };
         } catch (error) {
             return {
                 status: 500,
-                message: `Error al obtener documentos: ${error.message}`, // Handle database error
+                message: `Error al obtener documentos: ${error.message}`,
             };
         }
     }
+
     async getNoteTitle(noteTitle) {
-        await this.connectDB(); // Asegúrate de conectarte a la base de datos
+        await this.connectDB();
         try {
             const collection = this.db.collection('notas_historial');
-
-            // Realiza la búsqueda de notas que contengan el título buscado (case insensitive)
             const result = await collection.findOne({ title: { $regex: noteTitle, $options: 'i' } });
 
             if (!result) {
@@ -75,4 +74,32 @@ module.exports = class Asiento {
             };
         }
     }
+
+    async getHistoryNotes(noteId) {
+        await this.connectDB();
+        try {
+            const collection = this.db.collection('notas_historial');
+    
+            // Busca todos los documentos relacionados con el noteId para obtener el historial
+            const result = await collection.find({ note_id: noteId }).sort({ timestamp: 1 }).toArray(); // Ordena por fecha
+    
+            if (!result.length) {
+                return {
+                    status: 404,
+                    message: 'Historial de la nota no encontrado',
+                };
+            }
+    
+            return {
+                status: 200,
+                data: result, // Devuelve todos los cambios asociados al noteId
+            };
+        } catch (error) {
+            return {
+                status: 500,
+                message: `Error al obtener el historial de la nota: ${error.message}`,
+            };
+        }
+    }    
+
 };
