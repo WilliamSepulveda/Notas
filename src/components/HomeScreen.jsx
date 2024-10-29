@@ -13,7 +13,7 @@ const Home = () => {
     // Llamada a la API para obtener notas
     const fetchNotas = async () => {
       try {
-        const response = await fetch('http://localhost:5500');
+        const response = await fetch('http://localhost:5500/notes');
         const data = await response.json();
         setNotas(data);
       } catch (error) {
@@ -25,7 +25,7 @@ const Home = () => {
   }, []);
 
   const handleClick = () => {
-    navegation('/NewNote');
+    navegation('/Notas/NewNote');
   };
 
   return (
@@ -45,7 +45,7 @@ const Home = () => {
       <div className={styles.content}>
         <div className={styles.contenedorNotas}>
           {notas.map(nota => (
-            <Link to={`/editNota/${nota.id}`} key={nota.id} style={{ textDecoration: 'none' }}>
+            <Link to={`/Notas/editNota/${nota.id}`} key={nota.id} style={{ textDecoration: 'none' }}>
               <div className={styles.nota} style={{ backgroundColor: nota.color }}>
                 <p>{nota.text}</p>
               </div>

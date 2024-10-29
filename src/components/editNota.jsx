@@ -49,7 +49,7 @@ const Newnote = () => {
 
   const handleDescartar = () => {
     setShowModal(false);
-    navigate('/HomeScreen');
+    navigate('/Notas/HomeScreen');
   };
 
   return (
