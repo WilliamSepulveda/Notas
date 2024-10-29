@@ -13,7 +13,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/NewNote');
+    navigate('/Notas/NewNote');
   };
   return (
     <div className={styles.container}>

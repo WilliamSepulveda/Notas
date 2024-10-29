@@ -13,7 +13,7 @@ const Newnote = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/');
+    navigate('/Notas');
   };
 
   const handleGuardar = async () => {

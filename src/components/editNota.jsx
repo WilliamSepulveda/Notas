@@ -18,7 +18,7 @@ const Newnote = () => {
     if (isChanged) {
       setShowModal(true); // Muestra el modal si hay cambios
     } else {
-      navigate('/HomeScreen');
+      navigate('/Notas/HomeScreen');
     }
   };
 
