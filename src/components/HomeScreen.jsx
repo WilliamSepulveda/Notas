@@ -7,14 +7,14 @@ import { useNavigate, Link } from 'react-router-dom';
 
 const Home = () => {
   const [notas, setNotas] = useState([]);
-  const navegation = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Llamada a la API para obtener notas
     const fetchNotas = async () => {
       try {
-        const response = await fetch('http://localhost:5500/notes');
+        const response = await fetch(`/notes/{}`); 
         const data = await response.json();
+        console.log(data);  // Verificar qué datos se están obteniendo
         setNotas(data);
       } catch (error) {
         console.error('Error al obtener las notas:', error);
@@ -25,7 +25,7 @@ const Home = () => {
   }, []);
 
   const handleClick = () => {
-    navegation('/Notas/NewNote');
+    navigate('/Notas/NewNote');
   };
 
   return (
@@ -44,13 +44,17 @@ const Home = () => {
 
       <div className={styles.content}>
         <div className={styles.contenedorNotas}>
-          {notas.map(nota => (
-            <Link to={`/Notas/editNota/${nota.id}`} key={nota.id} style={{ textDecoration: 'none' }}>
-              <div className={styles.nota} style={{ backgroundColor: nota.color }}>
-                <p>{nota.text}</p>
-              </div>
-            </Link>
-          ))}
+          {notas.length > 0 ? (
+            notas.map(nota => (
+              <Link to={`/Notas/editNota/${nota.id}`} key={nota.id} style={{ textDecoration: 'none' }}>
+                <div className={styles.nota} style={{ backgroundColor: nota.color || '#FFF' }}>
+                  <p>{nota.text}</p>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <p>No hay notas para mostrar.</p>
+          )}
         </div>
       </div>
 
