@@ -18,7 +18,7 @@ const EditNota = () =>{
     if (isChanged) {
       setShowModal(true); // Show modal if there are unsaved changes
     } else {
-      navigate('/Notas/HomeScreen'); // Navigate directly if no changes
+      navigate('/Notas/HomeScreen'); 
     }
   };
 
@@ -76,7 +76,7 @@ const EditNota = () =>{
           value={title}
           onChange={(e) => {
             setTitle(e.target.value);
-            setIsChanged(true); // Mark the content as changed
+            setIsChanged(true); 
           }}
         />
         <textarea
@@ -85,7 +85,7 @@ const EditNota = () =>{
           value={content}
           onChange={(e) => {
             setContent(e.target.value);
-            setIsChanged(true); // Mark the content as changed
+            setIsChanged(true);
           }}
         />
       </div>
