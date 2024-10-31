@@ -85,6 +85,7 @@ npm install
 → npm install mongoose
 → npm install dotenv
 → npm install express-validator
+→ npm install bcrypt
 ```
 
 
@@ -92,3 +93,27 @@ npm install
 ```bash
 → npm install jsonwebtoken
 ```
+
+
+
+
+
+# API de Notas
+
+### Endpoints que deben desarrollarse
+
+| **Funcionalidad**                    | **Método HTTP** | **Endpoint**          | **Descripción**                                              |
+| ------------------------------------ | --------------- | --------------------- | ------------------------------------------------------------ |
+| Crear Usuario                        | POST            | `/users`              | Crea un nuevo usuario y devuelve un token JWT.               |
+| Iniciar Sesión                       | POST            | `/users/login`        | Permite a un usuario iniciar sesión y obtener un token JWT.  |
+| **Cerrar Sesión (opcional)**         | POST            | `/users/logout`       | Permite a un usuario cerrar sesión.                          |
+| Crear Nota                           | POST            | `/notes`              | Crea una nueva nota.                                         |
+| Obtener Todas las Notas              | GET             | `/notes`              | Obtiene una lista de todas las notas.                        |
+| Obtener Nota Específica              | GET             | `/notes/{id}`         | Obtiene los detalles de una nota específica.                 |
+| Actualizar Nota                      | PUT             | `/notes/{id}`         | Actualiza una nota existente.                                |
+| Eliminar Nota                        | DELETE          | `/notes/{id}`         | Elimina una nota específica.                                 |
+| Buscar Notas                         | GET             | `/notes/search`       | Busca notas por título o contenido.                          |
+| Obtener Historial de Cambios de Nota | GET             | `/notes/{id}/history` | Obtiene el historial de cambios de una nota específica. **(solo admin)** |
+| **Crear Nueva Versión de Nota**      | POST            | `/notes/{id}/history` | Guarda una nueva versión de una nota. **(Sin interfaz gráfica)** |
+| **Actualizar Usuario (opcional)**    | PUT             | `/users/{id}`         | Actualiza la información del usuario específico **(solo admin).** |
+| **Eliminar Usuario (opcional)**      | DELETE          | `/users/{id}`         | Elimina un usuario específico **(solo admin).**              |
