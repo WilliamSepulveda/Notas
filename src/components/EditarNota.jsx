@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
-const EditNota = () =>{
+const EditarNota = () =>{
   const [title, setTitle] = useState('este es un ejemplo de titulo ');
   const [content, setContent] = useState('este es un ejemplo de contenido ');
   const [loading, setLoading] = useState(false);
@@ -106,4 +106,4 @@ const EditNota = () =>{
   );
 };
 
-export default EditNota;
+export default EditarNota;
