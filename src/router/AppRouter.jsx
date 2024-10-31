@@ -13,7 +13,7 @@ function AppRouter() {
       <Route path="/Notas/NewNote" element={<NewNote />} />
       <Route path="/Notas/HomeScreen" element={<HomeScreen />} />
       <Route path="/Notas/EditNota" element={<EditNota />} />
-      <Route path="/Notas/searchNote" element={<SearchNote />} /> {/* Changed to uppercase */}
+      <Route path="/Notas/SearchNote" element={<SearchNote />} /> {/* Changed to uppercase */}
     </Routes>
   );
 }
