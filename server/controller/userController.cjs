@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const User = require('../model/UserModel.cjs');
 
 const user = new User();
-
+const jwt = require('jsonwebtoken'); 
 
 exports.createUser = async (req, res) => {
     const { userName, email, password } = req.body; // Removed 'telefono' and 'rol'
@@ -56,44 +56,57 @@ exports.createUser = async (req, res) => {
 
   
 exports.login = async (req, res) => {
-    try {
-      let { email, password } = req.body; // Cambiar a req.body
+  try {
+      const { email, password } = req.body; // Cambiar a req.body
       console.log('Datos recibidos:', { email, password });
-  
+
+      // Validar que se proporcionen las credenciales
       if (!email || !password) {
-        return res.status(400).json({ status: 400, message: 'Faltan credenciales.' });
+          return res.status(400).json({ status: 400, message: 'Faltan credenciales.' });
       }
-  
+
+      // Buscar al usuario por correo electrónico
       let resFindUser = await user.findOneUserByEmail(email);
-  
       if (resFindUser.status === 404) {
-        return res.status(resFindUser.status).json(resFindUser);
+          return res.status(resFindUser.status).json(resFindUser);
       }
-  
+
       if (!resFindUser.data || !resFindUser.data.password) {
-        return res.status(500).json({ status: 500, message: 'Error al recuperar la contraseña del usuario.' });
+          return res.status(500).json({ status: 500, message: 'Error al recuperar la contraseña del usuario.' });
       }
-  
-      let resEmailAndPassword = await bcrypt.compare(password, resFindUser.data.password);
-      if (!resEmailAndPassword) {
-        return res.status(406).json({ status: 406, message: 'Contraseña inválida' });
+
+      // Comparar la contraseña proporcionada con la almacenada
+      const isPasswordValid = await bcrypt.compare(password, resFindUser.data.password);
+      if (!isPasswordValid) {
+          return res.status(406).json({ status: 406, message: 'Contraseña inválida' });
       }
-  
+
       // Eliminar la contraseña antes de enviar la respuesta
       delete resFindUser.data.password;
-  
-      res.cookie("token", JSON.stringify(resFindUser), { maxAge: 1800000 });
-  
-      res.status(200).json({
-        status: 200,
-        message: 'Inicio de sesión exitoso',
-        redirectUrl: '/Notas/HomeScreen'
+
+      // Generar el token JWT
+      const token = jwt.sign(
+          { id: resFindUser.data._id, username: resFindUser.data.username }, // Cambia user._id a resFindUser.data._id
+          'tu_clave_secreta',
+          { expiresIn: '1h' }
+      );
+
+      // Enviar la cookie con el token (opcional)
+      res.cookie("token", token, { maxAge: 1800000, httpOnly: true }); // Usa el token en vez de JSON.stringify(resFindUser)
+
+      // Responder con el token y la redirección
+      return res.status(200).json({
+          status: 200,
+          message: 'Inicio de sesión exitoso',
+          redirectUrl: '/Notas/',
+          token // También puedes enviar el token si lo deseas
       });
-    } catch (error) {
+
+  } catch (error) {
       console.error('Error al iniciar sesión:', error.message);
-      res.status(500).json({ status: 500, message: 'Error interno del servidor.' });
-    }
-  };
+      return res.status(500).json({ status: 500, message: 'Error interno del servidor.' });
+  }
+};
   
 exports.findCookies = async (req, res) => {
   console.log(req.cookies.token); 

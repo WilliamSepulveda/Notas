@@ -13,7 +13,7 @@ router.get('/', noteController.getAllNotes); // Obtiene una lista de todas las n
 
 
 // router.post('/:id/history', noteController.saveNewVersionNote);
-router.put('/:id', noteController.updateNote);
+router.put('/:id', authenticate, noteController.updateNote);
 router.delete('/:id', noteController.deleteNote);
 
 

@@ -94,9 +94,14 @@ exports.createNote = async (req, res) => {
 
 exports.updateNote = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { id } = req.params; // Verifica si esto está recibiendo el id correctamente
+        if (!id) {
+            return res.status(400).json({ message: "ID de nota no proporcionado" });
+        }
+
         const { title, content } = req.body;
 
+        
         const asiento = new Notes();
         const result = await asiento.updateNote(id, { title, content }, req.user.id);
 
