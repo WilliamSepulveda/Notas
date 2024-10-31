@@ -94,7 +94,10 @@ npm install
 → npm install jsonwebtoken
 ```
 
-
+**instalacion para el token**
+```bash
+→ npm install jsonwebtoken
+```
 
 
 
