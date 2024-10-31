@@ -31,7 +31,7 @@ const NuevaNota = () => {
         console.log(response.data);
         setTitle(''); // Limpia el campo del título
         setContent(''); // Limpia el campo del contenido
-        navigate('/Notas/PaginaPrincipal');
+        navigate('/Notas/');
       } catch (error) {
         console.error('Error al guardar la nota:', error);
         alert('Hubo un error al guardar la nota');

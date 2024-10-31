@@ -20,9 +20,11 @@ const NotaVacia = () => {
       <header className={styles.header}>
         <div className={styles.title}>Notes</div>
         <div className={styles.iconContainer}>
+          <a href="/Notas/BuscarNota">
           <div className={styles.icon1}>
             <img src={search} alt="Search Icon" />
           </div>
+          </a>
           <div className={styles.icon2}>
             <img src={info} alt="Info Icon" />
           </div>
