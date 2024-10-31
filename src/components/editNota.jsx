@@ -6,50 +6,51 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
-const Newnote = () => {
-  const [title, setTitle] = useState('Título de ejemplo');
-  const [content, setContent] = useState('The Design of Everyday Things...');
+const EditNota = () =>{
+  const [title, setTitle] = useState('este es un ejemplo de titulo ');
+  const [content, setContent] = useState('este es un ejemplo de contenido ');
   const [loading, setLoading] = useState(false);
   const [isChanged, setIsChanged] = useState(false);
-  const [showModal, setShowModal] = useState(false); // Estado para controlar la visibilidad del modal
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const handleClick = () => {
     if (isChanged) {
-      setShowModal(true); // Muestra el modal si hay cambios
+      setShowModal(true); // Show modal if there are unsaved changes
     } else {
-      navigate('/Notas/HomeScreen');
+      navigate('/Notas/HomeScreen'); // Navigate directly if no changes
     }
   };
 
   const handleGuardar = async () => {
     if (!title || !content) {
       alert('El título y el contenido no pueden estar vacíos');
-    } else {
-      try {
-        setLoading(true);
-        const response = await axios.post('http://localhost:3000/api/guardar', {
-          title: title,
-          content: content,
-        });
-        alert('Nota guardada correctamente');
-        console.log(response.data);
-        setTitle('');
-        setContent('');
-        setIsChanged(false);
-        navigate('/HomeScreen');
-      } catch (error) {
-        console.error('Error al guardar la nota:', error);
-        alert('Hubo un error al guardar la nota');
-      } finally {
-        setLoading(false);
-      }
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const response = await axios.post('http://localhost:3000/api/guardar', {
+        title: title,
+        content: content,
+      });
+      alert('Nota guardada correctamente');
+      console.log(response.data);
+      setTitle('');
+      setContent('');
+      setIsChanged(false);
+      navigate('/Notas/HomeScreen'); // Navigate to home screen or specific page after saving
+    } catch (error) {
+      console.error('Error al guardar la nota:', error);
+      alert('Hubo un error al guardar la nota. Por favor, inténtalo de nuevo.');
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleDescartar = () => {
-    setShowModal(false);
-    navigate('/Notas/HomeScreen');
+    setShowModal(false); // Close the modal
+    navigate('/Notas/HomeScreen'); // Navigate to home screen
   };
 
   return (
@@ -75,7 +76,7 @@ const Newnote = () => {
           value={title}
           onChange={(e) => {
             setTitle(e.target.value);
-            setIsChanged(true);
+            setIsChanged(true); // Mark the content as changed
           }}
         />
         <textarea
@@ -84,19 +85,20 @@ const Newnote = () => {
           value={content}
           onChange={(e) => {
             setContent(e.target.value);
-            setIsChanged(true);
+            setIsChanged(true); // Mark the content as changed
           }}
         />
       </div>
-      {loading && <p>Guardando...</p>}
+      {loading && <p>Guardando...</p>} {/* Loading indicator */}
 
-      {/* Modal personalizado */}
+      {/* Custom Modal for unsaved changes */}
       {showModal && (
         <div className={styles.modal}>
           <div className={styles.modalContent}>
             <p>Tienes cambios sin guardar. ¿Qué deseas hacer?</p>
             <button className={styles.modalButton} onClick={handleGuardar}>Guardar</button>
             <button className={styles.modalButton1} onClick={handleDescartar}>Descartar</button>
+            <button className={styles.modalButton2} onClick={() => setShowModal(false)}>Cancelar</button>
           </div>
         </div>
       )}
@@ -104,4 +106,4 @@ const Newnote = () => {
   );
 };
 
-export default Newnote;
+export default EditNota;
