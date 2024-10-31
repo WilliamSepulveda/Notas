@@ -5,7 +5,7 @@ import search from '../storage/img/search.png';
 import info from '../storage/img/info_outline.png';
 import { useNavigate, Link } from 'react-router-dom';
 
-const Home = () => {
+const HomeScreen = () => {
   const [notas, setNotas] = useState([]);
   const navigate = useNavigate();
 
@@ -65,4 +65,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeScreen;

@@ -2,7 +2,7 @@ import styles from '../styles/searchNote.module.css';
 import cuate from '../storage/img/cuate.png'
 import close from '../storage/img/close.png';
 
-const searchNote = () => {
+const SearchNote = () => {
     return (
       <div className={styles.container}>
          <header className={styles.header}>
@@ -24,5 +24,5 @@ const searchNote = () => {
     );
   };
   
-  export default searchNote;
+  export default SearchNote;
   
