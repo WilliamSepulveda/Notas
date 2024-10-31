@@ -25,7 +25,7 @@ const PaginaPrincipal = () => {
   }, []);
 
   const handleClick = () => {
-    navigate('/Notas/NewNote');
+    navigate('/Notas/NuevaNota');
   };
 
   return (
@@ -46,7 +46,7 @@ const PaginaPrincipal = () => {
         <div className={styles.contenedorNotas}>
           {notas.length > 0 ? (
             notas.map(nota => (
-              <Link to={`/Notas/editNota/${nota.id}`} key={nota.id} style={{ textDecoration: 'none' }}>
+              <Link to={`/Notas/EditarNota/${nota.id}`} key={nota.id} style={{ textDecoration: 'none' }}>
                 <div className={styles.nota} style={{ backgroundColor: nota.color || '#FFF' }}>
                   <p>{nota.text}</p>
                 </div>

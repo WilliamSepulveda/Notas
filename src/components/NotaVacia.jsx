@@ -13,7 +13,7 @@ const NotaVacia = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/Notas/NewNote');
+    navigate('/Notas/NuevaNota');
   };
   return (
     <div className={styles.container}>

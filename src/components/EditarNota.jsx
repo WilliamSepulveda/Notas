@@ -18,7 +18,7 @@ const EditarNota = () =>{
     if (isChanged) {
       setShowModal(true); // Show modal if there are unsaved changes
     } else {
-      navigate('/Notas/HomeScreen'); 
+      navigate('/Notas/PaginaPrincipal'); 
     }
   };
 
@@ -50,7 +50,7 @@ const EditarNota = () =>{
 
   const handleDescartar = () => {
     setShowModal(false); // Close the modal
-    navigate('/Notas/HomeScreen'); // Navigate to home screen
+    navigate('/Notas/PaginaPrincipal'); // Navigate to home screen
   };
 
   return (
