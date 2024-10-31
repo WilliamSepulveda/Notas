@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Home = () => {
+const NotaVacia = () => {
 
   const navigate = useNavigate();
 
@@ -41,4 +41,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default NotaVacia;

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios'; // Para hacer la petición a la base de datos
 
-const Newnote = () => {
+const NuevaNota = () => {
   const [title, setTitle] = useState(''); // Estado para el título
   const [content, setContent] = useState(''); // Estado para el contenido
   const [loading, setLoading] = useState(false); // Para manejar el estado de carga
@@ -76,4 +76,4 @@ const Newnote = () => {
   );
 };
 
-export default Newnote;
+export default NuevaNota;
