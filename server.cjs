@@ -1,15 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const { join } = require('path');
-const miRouter = require('./server/router/noteRouter.cjs'); 
-
+const noteRoutes = require('./server/router/noteRouter.cjs'); 
+const userRoutes = require('./server/router/userRouter.cjs');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/notes', miRouter); 
+app.use('/notes', noteRoutes); 
+app.use('/Users', userRoutes);
 
 app.use((req, res) => {
     res.status(404).json({ message: 'La ruta solicitada no está disponible' });

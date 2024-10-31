@@ -1,13 +1,12 @@
-// // router/userRouter.cjs
-// const express = require('express');
-// const router = express.Router();
-// const userController = require('../controller/user.controller.cjs');
+// router/userRouter.cjs
+const express = require('express');
+const router = express.Router();
+const userController = require('../controller/userController.cjs');
 
 // // Crear un nuevo usuario
-// router.post('/users', userController.createUser); // Crea un nuevo usuario y devuelve un token JWT
-
+router.post('/', userController.createUser); 
 // // Iniciar sesión
-// router.post('/users/login', userController.loginUser); // Permite a un usuario iniciar sesión y obtener un token JWT
+router.post('/login', userController.login); 
 
 // // Cerrar sesión (opcional)
 // router.post('/users/logout', userController.logoutUser); // Permite a un usuario cerrar sesión
@@ -18,4 +17,4 @@
 // // Eliminar usuario (opcional, solo admin)
 // router.delete('/users/:id', userController.deleteUser); // Elimina un usuario específico
 
-// module.exports = router;
+module.exports = router;

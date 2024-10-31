@@ -72,4 +72,57 @@ exports.getNoteByHistory = async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: `Error al obtener el historial de la nota: ${error.message}` });
     }
+}
+
+exports.createNote = async (req, res) => {
+    try {
+        const { title, content } = req.body;
+        const userId = req.user.id;
+
+        const asiento = new Notes();
+        const result = await asiento.createNote({ title, content, userId, createdAt: new Date(), updatedAt: new Date() });
+
+        if (result.status !== 201) {
+            return res.status(result.status).json({ message: result.message });
+        }
+
+        return res.status(201).json(result.data);
+    } catch (error) {
+        return res.status(500).json({ message: `Error al crear la nota: ${error.message}` });
+    }
+};
+
+exports.updateNote = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title, content } = req.body;
+
+        const asiento = new Notes();
+        const result = await asiento.updateNote(id, { title, content }, req.user.id);
+
+        if (result.status !== 200) {
+            return res.status(result.status).json({ message: result.message });
+        }
+
+        return res.status(200).json(result.data);
+    } catch (error) {
+        return res.status(500).json({ message: `Error al actualizar la nota: ${error.message}` });
+    }
+};
+
+exports.deleteNote = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const asiento = new Notes();
+        const result = await asiento.deleteNote(id);
+
+        if (result.status !== 200) {
+            return res.status(result.status).json({ message: result.message });
+        }
+
+        return res.status(200).json({ message: result.message });
+    } catch (error) {
+        return res.status(500).json({ message: `Error al eliminar la nota: ${error.message}` });
+    }
 };
