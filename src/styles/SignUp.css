@@ -6,6 +6,7 @@
     box-sizing: border-box;
     font-family: "nunito";
     color: #000;
+    transition: all 0.3s ease; /* Transición suave para todos los elementos */
 }
 
 header,
@@ -24,6 +25,25 @@ header {
     justify-content: flex-end;
 }
 
+.back-button {
+    display: inline-block;
+    margin-top: 10px; /* Espacio entre el logo y el botón */
+    padding: 10px 15px; /* Espaciado interno */
+    background-color: #575657; /* Color de fondo */
+    color: white; /* Color de texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    font-weight: bold; /* Texto en negrita */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones para el botón */
+}
+
+.back-button:hover {
+    background-color: #500a50; /* Color de fondo al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de elevación al pasar el ratón */
+}
+
 main {
     margin-bottom: 50px;
 }
@@ -37,6 +57,7 @@ main {
     padding-bottom: 38px;
     font-family: "nunito";
     font-size: 30px;
+    animation: fadeIn 0.5s ease; /* Animación de aparición para el título */
 }
 
 .login {
@@ -58,6 +79,7 @@ main {
     height: 56px;
     font-family: "nunito";
     font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición para inputs */
 }
 
 .login input[type="text"],
@@ -65,6 +87,13 @@ main {
 .login input[type="password"] {
     border: 1px solid #747474;
     padding: 16px 18px;
+}
+
+.login input[type="text"]:focus,
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
+    border-color: #000; /* Cambia el color del borde al enfocar */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra al enfocar */
 }
 
 .login input[type="password"] {
@@ -80,6 +109,12 @@ main {
 .login input[type="submit"] {
     background: #000;
     color: #fff;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición para el botón de submit */
+}
+
+.login input[type="submit"]:hover {
+    background: #333; /* Cambia el color al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de elevación al pasar el ratón */
 }
 
 footer {
@@ -89,4 +124,16 @@ footer {
 footer p b {
     font-family: "nunito";
     font-size: 14px;
+}
+
+/* Animación para la aparición de elementos */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
