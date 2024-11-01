@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../styles/LogIn.css'; 
-import Google from '../storage/img/google.svg';
+import Google from '../storage/img/Google.svg';
 import Apple from '../storage/img/Apple.svg';
 import Facebook from '../storage/img/Facebook.svg';
-import Logo from '../storage/img/star.svg';
+import Star from '../storage/img/Star.svg';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -60,7 +60,7 @@ const Login = () => {
         <>
             <header>
                 <div className="header__logo">
-                    <img src={Logo} alt="" />
+                    <img src={Star} alt="" />
                 </div>
             </header>
             <main>
