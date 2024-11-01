@@ -5,43 +5,31 @@ import guardar from '../storage/img/save.png';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2'; // Importa SweetAlert2
 
 const EditarNota = () => {
+  const [originalTitle, setOriginalTitle] = useState('');
+  const [originalContent, setOriginalContent] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { id } = useParams(); // Obtain the note ID from URL params
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchNote = async () => {
       try {
         const response = await axios.get(`http://localhost:5500/notes/${id}`);
-  
-        // Check if the response data is correct
         if (response.data && response.data.data) {
-          console.log('Response data:', response.data.data); // Log the entire response data
-  
-          // Extract title and content from the response
           const { title, content } = response.data.data;
-  
-          // Check for title and content
-          if (title && content) {
-            setTitle(title);
-            setContent(content);
-            console.log('Datos de la nota cargados:', response.data.data); // Log when data is loaded
-          } else {
-            // Handle case where title or content is missing
-            setTitle('Título no disponible');
-            setContent('Contenido no disponible');
-            console.log('No se encontraron datos para esta nota'); // Log if no data found
-          }
+          setOriginalTitle(title);
+          setOriginalContent(content);
+          setTitle(title);
+          setContent(content);
         } else {
-          // Handle case where response is empty
           setTitle('Título no disponible');
           setContent('Contenido no disponible');
-          console.log('La respuesta está vacía'); // Log if response is empty
         }
       } catch (error) {
         console.error('Error al cargar la nota:', error);
@@ -50,26 +38,50 @@ const EditarNota = () => {
         setLoading(false);
       }
     };
-  
+
     fetchNote();
   }, [id]);
-  
-  
 
   const handleClick = () => {
-    navigate('/Notas/PaginaPrincipal');
+    if (hasChanges()) {
+      Swal.fire({
+        title: 'Tienes cambios no guardados',
+        text: "¿Seguro que quieres salir sin guardar?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, salir',
+        cancelButtonText: 'No, quedarme'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/Notas/PaginaPrincipal'); // Navega si el usuario confirma
+        }
+      });
+    } else {
+      navigate('/Notas/PaginaPrincipal'); // Navega directamente si no hay cambios
+    }
+  };
+
+  const hasChanges = () => {
+    return title !== originalTitle || content !== originalContent;
   };
 
   const handleGuardar = async () => {
+    if (title === '' && content === '') {
+      Swal.fire('Error', 'No hay cambios para guardar.', 'error');
+      return;
+    }
+  
     try {
-      await axios.put(`http://localhost:5500/notes/${id}`, { title, content });
-      alert('Nota guardada correctamente');
+      const response = await axios.put(`http://localhost:5500/notes/${id}`, { title, content });
+      console.log('Respuesta del servidor:', response.data); // Log de respuesta
+      Swal.fire('Éxito', 'Nota guardada correctamente', 'success');
       navigate('/Notas/');
     } catch (error) {
       console.error('Error al guardar la nota:', error);
-      alert('Hubo un error al guardar la nota. Por favor, inténtalo de nuevo.');
+      Swal.fire('Error', 'Hubo un error al guardar la nota. Por favor, inténtalo de nuevo.', 'error');
     }
   };
+  
 
   if (loading) return <p>Cargando nota...</p>;
   if (error) return <p>{error}</p>;
@@ -78,14 +90,14 @@ const EditarNota = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.icon} onClick={handleClick}>
-          <img src={retroceder} alt="return Icon" />
+          <img src={retroceder} alt="Icono de retorno" />
         </div>
         <div className={styles.iconContainer}>
           <div className={styles.icon1}>
-            <img src={ver} alt="ver Icon" />
+            <img src={ver} alt="Icono de ver" />
           </div>
           <div className={styles.icon2} onClick={handleGuardar}>
-            <img src={guardar} alt="Guardar Icon" />
+            <img src={guardar} alt="Icono de guardar" />
           </div>
         </div>
       </header>

@@ -1,5 +1,5 @@
 // controller/note.controller.cjs
-const Notes = require('../model/notesModel.cjs'); // Asegúrate de que la ruta sea correcta
+const Notes = require('../model/notesModel.cjs'); 
 
 exports.getAllNotes = async (req, res) => {
     try {
@@ -95,6 +95,8 @@ exports.createNote = async (req, res) => {
 exports.updateNote = async (req, res) => {
     try {
         const { id } = req.params;
+        const { title, content } = req.body; // Asegúrate de extraer estos campos
+
         if (!id) {
             return res.status(400).json({ message: "ID de nota no proporcionado" });
         }

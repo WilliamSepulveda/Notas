@@ -122,6 +122,7 @@ module.exports = class Asiento {
     async updateNote(noteId, data, userId) {
         await this.connectDB();
         try {
+
             const collection = this.db.collection('notas_historial');
 
             const note = await collection.findOne({ _id: new ObjectId(noteId) });
