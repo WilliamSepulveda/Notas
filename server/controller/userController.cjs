@@ -56,57 +56,78 @@ exports.createUser = async (req, res) => {
 
   
 exports.login = async (req, res) => {
-  try {
-      const { email, password } = req.body; // Cambiar a req.body
-      console.log('Datos recibidos:', { email, password });
+    try {
+        const { email, password } = req.body; // Cambiar a req.body
+        console.log('Datos recibidos:', { email, password });
 
-      // Validar que se proporcionen las credenciales
-      if (!email || !password) {
-          return res.status(400).json({ status: 400, message: 'Faltan credenciales.' });
-      }
+        // Validar que se proporcionen las credenciales
+        if (!email || !password) {
+            return res.status(400).json({ status: 400, message: 'Faltan credenciales.' });
+        }
 
-      // Buscar al usuario por correo electrónico
-      let resFindUser = await user.findOneUserByEmail(email);
-      if (resFindUser.status === 404) {
-          return res.status(resFindUser.status).json(resFindUser);
-      }
+        // Buscar al usuario por correo electrónico
+        let resFindUser = await user.findOneUserByEmail(email);
+        if (resFindUser.status === 404) {
+            return res.status(resFindUser.status).json(resFindUser);
+        }
 
-      if (!resFindUser.data || !resFindUser.data.password) {
-          return res.status(500).json({ status: 500, message: 'Error al recuperar la contraseña del usuario.' });
-      }
+        if (!resFindUser.data || !resFindUser.data.password) {
+            return res.status(500).json({ status: 500, message: 'Error al recuperar la contraseña del usuario.' });
+        }
 
-      // Comparar la contraseña proporcionada con la almacenada
-      const isPasswordValid = await bcrypt.compare(password, resFindUser.data.password);
-      if (!isPasswordValid) {
-          return res.status(406).json({ status: 406, message: 'Contraseña inválida' });
-      }
+        // Comparar la contraseña proporcionada con la almacenada
+        const isPasswordValid = await bcrypt.compare(password, resFindUser.data.password);
+        if (!isPasswordValid) {
+            return res.status(406).json({ status: 406, message: 'Contraseña inválida' });
+        }
 
-      // Eliminar la contraseña antes de enviar la respuesta
-      delete resFindUser.data.password;
+        // Eliminar la contraseña antes de enviar la respuesta
+        delete resFindUser.data.password;
 
-      // Generar el token JWT
-      const token = jwt.sign(
-          { id: resFindUser.data._id, username: resFindUser.data.username }, // Cambia user._id a resFindUser.data._id
-          'tu_clave_secreta',
-          { expiresIn: '1h' }
-      );
+        // Generar el token JWT
+        const token = jwt.sign(
+            { id: resFindUser.data._id, username: resFindUser.data.username }, // Cambia user._id a resFindUser.data._id
+            'tu_clave_secreta',
+            { expiresIn: '1h' }
+        );
 
-      // Enviar la cookie con el token (opcional)
-      res.cookie("token", token, { maxAge: 1800000, httpOnly: true }); // Usa el token en vez de JSON.stringify(resFindUser)
+        // Enviar la cookie con el token (opcional)
+        res.cookie("token", token, { maxAge: 1800000, httpOnly: true }); // Usa el token en vez de JSON.stringify(resFindUser)
 
-      // Responder con el token y la redirección
-      return res.status(200).json({
-          status: 200,
-          message: 'Inicio de sesión exitoso',
-          redirectUrl: '/Notas/',
-          token // También puedes enviar el token si lo deseas
-      });
+        // Responder con el token y la redirección
+        return res.status(200).json({
+            status: 200,
+            message: 'Inicio de sesión exitoso',
+            redirectUrl: '/Notas/',
+            token // También puedes enviar el token si lo deseas
+        });
+                // Suponiendo que esto está en tu función de login
+        const handleLogin = async () => {
+            const response = await fetch('http://localhost:5000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
 
-  } catch (error) {
-      console.error('Error al iniciar sesión:', error.message);
-      return res.status(500).json({ status: 500, message: 'Error interno del servidor.' });
-  }
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem('token', data.token); // Almacena el token
+                // Redirigir o hacer lo que sea necesario
+            } else {
+                const errorData = await response.json();
+                console.error('Error al iniciar sesión:', errorData.message);
+            }
+        };
+
+
+    } catch (error) {
+        console.error('Error al iniciar sesión:', error.message);
+        return res.status(500).json({ status: 500, message: 'Error interno del servidor.' });
+    }
 };
+
   
 exports.findCookies = async (req, res) => {
   console.log(req.cookies.token); 
