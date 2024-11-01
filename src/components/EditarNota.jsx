@@ -57,7 +57,7 @@ const EditarNota = () => {
   
 
   const handleClick = () => {
-    navigate('/Notas/');
+    navigate('/Notas/PaginaPrincipal');
   };
 
   const handleGuardar = async () => {

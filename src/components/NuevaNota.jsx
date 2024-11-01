@@ -13,7 +13,7 @@ const NuevaNota = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/Notas');
+    navigate('/Notas/PaginaPrincipal');
   };
 
   const handleGuardar = async () => {
@@ -31,7 +31,7 @@ const NuevaNota = () => {
         console.log(response.data);
         setTitle(''); // Limpia el campo del título
         setContent(''); // Limpia el campo del contenido
-        navigate('/Notas/');
+        navigate('/Notas/PaginaPrincipal');
       } catch (error) {
         console.error('Error al guardar la nota:', error);
         alert('Hubo un error al guardar la nota');
