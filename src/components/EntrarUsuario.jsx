@@ -1,8 +1,18 @@
-// EntrarUsuario.jsx
+import { useNavigate } from 'react-router-dom';
 import '../styles/EntrarUsuario.css';
-import start from '../storage/img/Illustration.svg'
+import start from '../storage/img/Illustration.svg';
 
 const EntrarUsuario = () => {
+    const navigate = useNavigate(); // Usa useNavigate para manejar la navegación
+
+    const handleLoginClick = () => {
+        navigate('/Notas/Login'); // Cambia esto a la ruta correcta para el componente Login
+    };
+
+    const handleSignUpClick = () => {
+        navigate('/Notas/signup'); // Cambia esto a la ruta correcta para el componente SignUp
+    };
+
     return (
         <main>
             <section className="section__imagen">
@@ -15,8 +25,8 @@ const EntrarUsuario = () => {
                 </div>
             </section>
             <section className="section__button">
-                <a href="./views/log-In-1.html">Sign In</a>
-                <a href="./views/sign-Up-3.html">Create account</a>
+                <button onClick={handleLoginClick}>Sign In</button>
+                <button onClick={handleSignUpClick}>Create account</button>
             </section>
         </main>
     );
