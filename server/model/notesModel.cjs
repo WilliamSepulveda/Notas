@@ -122,14 +122,14 @@ module.exports = class Asiento {
     async updateNote(noteId, data, userId) {
         await this.connectDB();
         try {
-
             const collection = this.db.collection('notas_historial');
-
-            const note = await collection.findOne({ _id: new ObjectId(noteId) });
+    
+            // Busca la nota usando el ID entero
+            const note = await collection.findOne({ id: noteId });
             if (!note) {
                 return { status: 404, message: 'Nota no encontrada' };
             }
-
+    
             // Agregar el contenido actual al historial antes de actualizar
             await this.db.collection('notas_historial').insertOne({
                 note_id: noteId,
@@ -137,13 +137,13 @@ module.exports = class Asiento {
                 timestamp: new Date(),
                 updatedBy: userId,
             });
-
+    
             // Actualizar la nota
             const result = await collection.updateOne(
-                { _id: new ObjectId(noteId) },
+                { id: noteId }, // Usamos el campo id
                 { $set: { ...data, updatedAt: new Date() } }
             );
-
+    
             return { status: 200, data: result };
         } catch (error) {
             return {
@@ -152,6 +152,31 @@ module.exports = class Asiento {
             };
         }
     }
+    async getNoteId(noteId) {
+        await this.connectDB();
+        try {
+            const collection = this.db.collection('notas_historial');
+            const result = await collection.findOne({ id: parseInt(noteId) }); // Buscar por el campo id
+    
+            if (!result) {
+                return {
+                    status: 404,
+                    message: 'Nota no encontrada',
+                };
+            }
+    
+            return {
+                status: 200,
+                data: result,
+            };
+        } catch (error) {
+            return {
+                status: 500,
+                message: `Error al obtener documentos: ${error.message}`,
+            };
+        }
+    }
+        
 
     // Método para eliminar una nota
     async deleteNote(noteId) {
