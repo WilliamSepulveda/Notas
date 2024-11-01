@@ -25,8 +25,8 @@ const EntrarUsuario = () => {
                 </div>
             </section>
             <section className="section__button">
-                <button onClick={handleLoginClick}>Sign In</button>
-                <button onClick={handleSignUpClick}>Create account</button>
+                <button className="button" onClick={handleLoginClick}>Sign In</button>
+                <button className="button" onClick={handleSignUpClick}>Create account</button>
             </section>
         </main>
     );

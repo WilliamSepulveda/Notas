@@ -13,7 +13,8 @@ main {
     margin: 0 37px; 
 }
 
-.section__imagen, .section__button {
+.section__imagen,
+.section__button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,7 +43,7 @@ main {
     gap: 14px;
 }
 
-.section__button a {
+.section__button .button {
     border: none;
     outline: none;
     text-decoration: none;
@@ -54,16 +55,38 @@ main {
     height: 56px;
     font-family: "nunito";
     font-size: 16px;
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones para el hover */
+    padding: 0 20px; /* Espaciado adicional para el botón */
 }
 
-.section__button a:first-child {
+.section__button .button:first-child {
     background: #000;
     color: #fff;
 }
 
-.section__button a:last-child {
+.section__button .button:last-child {
     background: #fff;
     border: 1px solid #747474;
     color: #000;
 }
 
+.section__button .button:hover {
+    transform: translateY(-3px); /* Efecto de elevación al pasar el ratón */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra al pasar el ratón */
+}
+
+/* Animaciones adicionales */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.section__imagen,
+.section__text {
+    animation: fadeIn 0.5s ease; /* Fade-in para la sección */
+}
