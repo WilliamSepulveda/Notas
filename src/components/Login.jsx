@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../styles/LogIn.css'; 
-import google from '../storage/img/google.svg';
-import apple from '../storage/img/Apple.svg';
-import facebook from '../storage/img/Facebook.svg';
-import logo from '../storage/img/star.svg';
+import Google from '../storage/img/google.svg';
+import Apple from '../storage/img/Apple.svg';
+import Facebook from '../storage/img/Facebook.svg';
+import Logo from '../storage/img/star.svg';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -60,7 +60,7 @@ const Login = () => {
         <>
             <header>
                 <div className="header__logo">
-                    <img src={logo} alt="" />
+                    <img src={Logo} alt="" />
                 </div>
             </header>
             <main>
@@ -95,9 +95,9 @@ const Login = () => {
                         <span>Or Login with</span>
                     </div>
                     <div className="section__social">
-                        <button><img src={facebook} alt="Facebook" /></button>
-                        <button><img src={google} alt="Google" /></button>
-                        <button><img src={apple} alt="Apple" /></button>
+                        <button><img src={Facebook} alt="Facebook" /></button>
+                        <button><img src={Google} alt="Google" /></button>
+                        <button><img src={Apple} alt="Apple" /></button>
                     </div>
                 </section>
             </main>
