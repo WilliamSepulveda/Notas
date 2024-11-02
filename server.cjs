@@ -7,7 +7,7 @@ const userRoutes = require('./server/router/userRouter.cjs');
 const app = express();
 
 // Middleware de CORS
-const allowedOrigins = ['http://localhost:5173', 'https://williamsepulveda.github.io'];
+const allowedOrigins = ['http://localhost:5173', 'https://williamsepulveda.github.io/Notas/'];
 
 app.use(cors({
   origin: function (origin, callback) {
