@@ -7,7 +7,11 @@ const userRoutes = require('./server/router/userRouter.cjs');
 const app = express();
 
 // Middleware de CORS
-const allowedOrigins = ['http://localhost:5173', 'https://williamsepulveda.github.io/Notas/'];
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://williamsepulveda.github.io/Notas/',
+  'https://notes.vercel.app'  
+];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -34,8 +38,8 @@ app.use((req, res) => {
 });
 
 // Iniciar el servidor
-const port = process.env.EXPRESS_PORT || 5000;
-const host = process.env.EXPRESS_HOST_NAME || 'localhost';
+const port = process.env.EXPRESS_PORT;
+const host = process.env.EXPRESS_HOST_NAME;
 
 app.listen(port, host, () => {
   console.log(`${process.env.EXPRESS_PROTOCOL}${host}:${port}`);

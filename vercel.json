@@ -1,19 +1,15 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/notes/(.*)",
-      "dest": "/notes/$1"
-    },
-    {
-      "src": "/users/(.*)",
-      "dest": "/users/$1"
-    }
-  ]
-}
+    "version": 2,
+    "builds": [
+      {
+        "src": "server.cjs",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "server.cjs"
+      }
+    ]
+  }

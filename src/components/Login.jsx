@@ -33,13 +33,13 @@ const Login = () => {
         }
 
         try {
-            const response = await fetch('https://notaswill.vercel.app/users', { /* ... */ 
-            method: 'POST',
+            const response = await fetch('`${API_URL}/users/login`', {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ email, password }),
-            });            
+            });
 
             if (response.ok) {
                 const data = await response.json();
