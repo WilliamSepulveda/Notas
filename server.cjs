@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Rutas de la API
 app.use('/notes', noteRoutes); 
-app.use('/users', userRoutes); // Cambié '/Users' a minúsculas para ser consistente con las convenciones de rutas
+app.use('/users', userRoutes);
 
 // Middleware para manejar rutas no encontradas
 app.use((req, res) => {
