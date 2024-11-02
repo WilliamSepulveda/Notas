@@ -98,30 +98,9 @@ exports.login = async (req, res) => {
         return res.status(200).json({
             status: 200,
             message: 'Inicio de sesión exitoso',
-            redirectUrl: '/Notas/',
+            redirectUrl: '/Notas/PaginaPrincipal',
             token // También puedes enviar el token si lo deseas
         });
-                // Suponiendo que esto está en tu función de login
-        const handleLogin = async () => {
-            const response = await fetch('http://localhost:5000/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem('token', data.token); // Almacena el token
-                // Redirigir o hacer lo que sea necesario
-            } else {
-                const errorData = await response.json();
-                console.error('Error al iniciar sesión:', errorData.message);
-            }
-        };
-
-
     } catch (error) {
         console.error('Error al iniciar sesión:', error.message);
         return res.status(500).json({ status: 500, message: 'Error interno del servidor.' });
