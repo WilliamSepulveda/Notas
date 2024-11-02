@@ -15,13 +15,15 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Permite solicitudes desde los orígenes en `allowedOrigins`
+    // Permitir solicitudes desde los orígenes en `allowedOrigins` o cualquier origen local
     if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
-  }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Especifica los métodos permitidos
+  credentials: true // Permite el uso de credenciales como cookies
 }));
 
 // Middleware para parsear JSON y datos URL-encoded
@@ -37,10 +39,16 @@ app.use((req, res) => {
   res.status(404).json({ message: 'La ruta solicitada no está disponible' });
 });
 
+// Manejo de errores global
+app.use((err, req, res, next) => {
+  console.error(err.stack); // Log de errores en la consola
+  res.status(500).json({ message: 'Error interno del servidor.' });
+});
+
 // Iniciar el servidor
-const port = process.env.EXPRESS_PORT;
-const host = process.env.EXPRESS_HOST_NAME;
+const port = process.env.EXPRESS_PORT || 5000; // Valor por defecto en caso de no estar definido
+const host = process.env.EXPRESS_HOST_NAME || '0.0.0.0'; // Valor por defecto
 
 app.listen(port, host, () => {
-  console.log(`${process.env.EXPRESS_PROTOCOL}${host}:${port}`);
+  console.log(`Servidor corriendo en ${process.env.EXPRESS_PROTOCOL}${host}:${port}`);
 });
