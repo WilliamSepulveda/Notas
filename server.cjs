@@ -1,14 +1,23 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors'); // Asegúrate de importar cors
+const cors = require('cors');
 const noteRoutes = require('./server/router/noteRouter.cjs'); 
 const userRoutes = require('./server/router/userRouter.cjs');
 
 const app = express();
 
 // Middleware de CORS
+const allowedOrigins = ['http://localhost:5173', 'https://williamsepulveda.github.io'];
+
 app.use(cors({
-  origin: 'http://localhost:5173' // Cambia esto si necesitas permitir otros orígenes
+  origin: function (origin, callback) {
+    // Permite solicitudes desde los orígenes en `allowedOrigins`
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 
 // Middleware para parsear JSON y datos URL-encoded
@@ -17,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Rutas de la API
 app.use('/notes', noteRoutes); 
-app.use('/Users', userRoutes);
+app.use('/users', userRoutes); // Cambié '/Users' a minúsculas para ser consistente con las convenciones de rutas
 
 // Middleware para manejar rutas no encontradas
 app.use((req, res) => {
@@ -25,8 +34,8 @@ app.use((req, res) => {
 });
 
 // Iniciar el servidor
-const port = process.env.EXPRESS_PORT || 5000; // Establecer un valor por defecto si no está definido
-const host = process.env.EXPRESS_HOST_NAME || 'localhost'; // Establecer un valor por defecto si no está definido
+const port = process.env.EXPRESS_PORT || 5000;
+const host = process.env.EXPRESS_HOST_NAME || 'localhost';
 
 app.listen(port, host, () => {
   console.log(`${process.env.EXPRESS_PROTOCOL}${host}:${port}`);
