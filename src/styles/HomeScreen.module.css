@@ -5,24 +5,26 @@
   margin: 0;
   box-sizing: border-box;
 }
-
 .container {
-  background-color: var(--color-principal); /* Asegúrate de que esta variable esté definida */
-  height: 100vh;
+  background-color: var(--color-principal);
+  min-height: 100vh; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start; 
   align-items: center;
-  color: #360ec5;
+  color: var(--color-texto);
   padding: 20px;
+  overflow: hidden;
 }
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--color-secundario);
 }
+
 .searchContainer {
   width: 100%;
   display: flex;
@@ -42,7 +44,7 @@
 }
 
 .title {
-  font-family: 'nunito-black';
+  font-family: 'nunito';
   letter-spacing: 5px;
   font-size: 24px;
   font-weight: bold;
@@ -53,6 +55,7 @@
   display: flex;
   gap: 15px;
 }
+
 
 .icon1,
 .icon2 {
@@ -65,12 +68,14 @@
   justify-content: center;
   text-align: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .icon1 img,
 .icon2 img {
   width: 24px;
   height: 24px;
+  filter: brightness(0) invert(1);
 }
 
 .content {
@@ -85,52 +90,82 @@
 .contenedorNotas {
   width: 100%;
   height: 80vh;
-  font-family: 'nunito';
+  font-family: 'Nunito', sans-serif;
   display: flex;
-  overflow-y: scroll;
+  overflow-y: auto; 
   flex-direction: column;
-  gap: 20px; 
-  justify-content: flex-start; /* Alinear elementos al inicio */
+  gap: 20px;
+  justify-content: flex-start;
+  padding-right: 20px; 
 }
+
+.contenedorNotas::-webkit-scrollbar {
+  width: 8px;
+}
+
+.contenedorNotas::-webkit-scrollbar-thumb {
+  background: var(--color-principal);
+  border-radius: 5px;
+}
+
+.contenedorNotas::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secundario);
+}
+
 
 .nota {
   width: 100%;
-  background-color: rgba(195, 106, 240, 0.675);
+  background-color: var(--color-nota);
   height: 15vh;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-size: 16px;
-  color: #000000; /* Considera cambiar este color si el fondo es oscuro */
+  color: var(--color-texto);
   font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.nota p{
+
+.nota:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+}
+
+.nota p {
   font-size: 1.2rem;
   color: white;
 }
+
 .nota h1 {
   color: white;
-  font-size: 2rem;
-  font-family: 'nunito';
+  font-size: 1.8rem;
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 10px;
 }
+
 .roundedButton {
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   bottom: 20px;
   right: 20px;
+  background-color: var(--color-boton);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .roundedButton img {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1); 
 }
 
 .roundedButton:hover {
-  background-color: #555;
+  background-color: var(--color-secundario);
+  transform: scale(1.1); /* Agranda el botón al hacer hover */
 }

@@ -1,5 +1,9 @@
 :root{
     --color-principal: #2d2d2d;
+    --color-secundario: #2d2d2d;
+    --color-boton: #a40c9c;
+    --color-texto: #ffffff;
+    --color-nota: #a156a3c5;
 }
 @font-face {
     font-family: 'nunito-black';
